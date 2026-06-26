@@ -30,10 +30,10 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 const subjects = [
   "General Inquiry",
-  "Apartment Booking",
+  "Room Booking",
+  "Conference Hall Booking",
+  "Catering Inquiry",
   "Long-Term Stay",
-  "Corporate Booking",
-  "Airport Pickup",
   "Feedback",
 ];
 
@@ -41,22 +41,22 @@ const contactDetails = [
   {
     icon: MapPin,
     label: "Physical Address",
-    value: "Area 47, Lilongwe\nMalawi",
+    value: "Along M1 Road, Chiwanja\nMzuzu, P.O. Box 895",
   },
   {
     icon: Clock,
-    label: "Lodge Operations",
+    label: "Operations",
     value: "Front Desk: 24/7 Available\nCheck-in: 14:00 | Check-out: 10:00",
   },
   {
     icon: Phone,
-    label: "Reservations",
-    value: "+265 999 000 000",
+    label: "Call Us",
+    value: "098 35 78 271\n099 76 78 678 (Conference)",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@2ntapartments.com",
+    value: "mphatsomotel@gmail.com",
   },
 ];
 
@@ -105,12 +105,12 @@ export default function ContactPage() {
               Get In Touch
             </p>
             <h1 className="font-display text-4xl md:text-6xl text-primary mb-6 leading-tight">
-              Let's Get You Settled In.
+              We're Here to Help.
             </h1>
             <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed">
-              Whether you're booking a short stay, a longer relocation, or a
-              corporate stay in Lilongwe, our team is here to help with every
-              detail.
+              Whether you need a room for the night, a conference hall for your
+              event, or just have a question call us, WhatsApp us, or send
+              us a message and we'll get back to you quickly.
             </p>
           </motion.div>
         </div>
@@ -133,10 +133,9 @@ export default function ContactPage() {
             >
               <div className="bg-surface border border-outline-variant/30 p-8 md:p-12">
                 <h2 className="font-display text-2xl md:text-3xl text-primary mb-8">
-                  Send an Enquiry
+                  Send a Message
                 </h2>
 
-                {/* Success State */}
                 {submitted ? (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -150,8 +149,8 @@ export default function ContactPage() {
                       Message Sent
                     </h3>
                     <p className="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
-                      Thank you for reaching out. Our team will respond within
-                      24 hours.
+                      Thank you for reaching out. Our team will respond as
+                      soon as possible.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
@@ -165,7 +164,6 @@ export default function ContactPage() {
                     onSubmit={handleSubmit(onSubmit)}
                     className="space-y-6"
                   >
-                    {/* Name + Email */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="space-y-2">
                         <label className="font-body text-xs tracking-widest uppercase text-on-surface-variant block">
@@ -212,7 +210,6 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    {/* Subject */}
                     <div className="space-y-2">
                       <label className="font-body text-xs tracking-widest uppercase text-on-surface-variant block">
                         Subject *
@@ -240,7 +237,6 @@ export default function ContactPage() {
                       )}
                     </div>
 
-                    {/* Message */}
                     <div className="space-y-2">
                       <label className="font-body text-xs tracking-widest uppercase text-on-surface-variant block">
                         Your Message *
@@ -248,7 +244,7 @@ export default function ContactPage() {
                       <textarea
                         {...register("message")}
                         rows={5}
-                        placeholder="How can we help with your stay?"
+                        placeholder="Tell us how we can help you..."
                         className={`w-full bg-background border px-4 py-3 font-body text-sm text-on-surface focus:outline-none focus:border-secondary transition-colors resize-none ${
                           errors.message
                             ? "border-red-400"
@@ -263,7 +259,6 @@ export default function ContactPage() {
                       )}
                     </div>
 
-                    {/* Submit */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -294,7 +289,7 @@ export default function ContactPage() {
               {/* Contact Details */}
               <div className="bg-surface border border-outline-variant/30 p-8">
                 <h3 className="font-display text-xl text-primary mb-6">
-                  Our Location
+                  Find Us
                 </h3>
                 <div className="space-y-6">
                   {contactDetails.map((detail) => (
@@ -317,35 +312,22 @@ export default function ContactPage() {
               </div>
 
               {/* Action Links */}
-              
               <a
-                href="https://wa.me/265999000000"
+                href="https://wa.me/265892259165"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between bg-secondary text-white p-5 hover:bg-secondary/90 transition-colors group"
               >
                 <div className="flex items-center gap-4">
                   <MessageCircle size={20} />
-                  <span className="font-body text-xs font-semibold tracking-[0.15em] uppercase">
-                    WhatsApp Support
-                  </span>
-                </div>
-                <MoveRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </a>
-
-<a
-              
-                href="tel:+265999000000"
-                className="flex items-center justify-between bg-primary text-white p-5 hover:bg-primary-light transition-colors group"
-              >
-                <div className="flex items-center gap-4">
-                  <Phone size={20} />
-                  <span className="font-body text-xs font-semibold tracking-[0.15em] uppercase">
-                    Call Reservations
-                  </span>
+                  <div>
+                    <span className="font-body text-xs font-semibold tracking-[0.15em] uppercase block">
+                      WhatsApp Us
+                    </span>
+                    <span className="font-body text-xs text-white/70">
+                      089 22 59 165
+                    </span>
+                  </div>
                 </div>
                 <MoveRight
                   size={16}
@@ -354,14 +336,40 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="mailto:info@2ntapartments.com"
+                href="tel:+265983578271"
+                className="flex items-center justify-between bg-primary text-white p-5 hover:bg-primary-light transition-colors group"
+              >
+                <div className="flex items-center gap-4">
+                  <Phone size={20} />
+                  <div>
+                    <span className="font-body text-xs font-semibold tracking-[0.15em] uppercase block">
+                      Call Reservations
+                    </span>
+                    <span className="font-body text-xs text-white/70">
+                      098 35 78 271
+                    </span>
+                  </div>
+                </div>
+                <MoveRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </a>
+
+              <a
+                href="mailto:mphatsomotel@gmail.com"
                 className="flex items-center justify-between border border-outline-variant/50 text-on-surface-variant p-5 hover:border-primary hover:text-primary transition-all group"
               >
                 <div className="flex items-center gap-4">
                   <Mail size={20} />
-                  <span className="font-body text-xs font-semibold tracking-[0.15em] uppercase">
-                    Email Us
-                  </span>
+                  <div>
+                    <span className="font-body text-xs font-semibold tracking-[0.15em] uppercase block">
+                      Email Us
+                    </span>
+                    <span className="font-body text-xs text-on-surface-variant/70">
+                      mphatsomotel@gmail.com
+                    </span>
+                  </div>
                 </div>
                 <MoveRight
                   size={16}
@@ -371,14 +379,14 @@ export default function ContactPage() {
 
               {/* Map */}
               <a
-                href="https://maps.google.com/?q=Lilongwe,Malawi"
+                href="https://maps.google.com/?q=Chiwanja,Mzuzu,Malawi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block relative h-52 overflow-hidden group"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
-                  alt="Lilongwe, Malawi"
+                  src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800"
+                  alt="Mzuzu, Malawi"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -413,10 +421,10 @@ export default function ContactPage() {
                 Address
               </p>
               <p className="font-display text-lg text-white mb-2">
-                Area 47
+                Along M1 Road, Chiwanja
               </p>
               <p className="font-body text-sm text-white/60">
-                Lilongwe, Malawi
+                Mzuzu, P.O. Box 895
               </p>
             </motion.div>
 
@@ -446,17 +454,20 @@ export default function ContactPage() {
               transition={{ delay: 0.2 }}
             >
               <p className="font-body text-xs tracking-[0.2em] uppercase text-accent mb-3">
-                Reservations
+                Contact
               </p>
               <p className="font-display text-lg text-white mb-2">
-                +265 999 000 000
+                098 35 78 271
               </p>
-              <Link
-                href="/booking"
-                className="inline-flex items-center gap-2 font-body text-xs font-semibold tracking-[0.15em] uppercase text-secondary-light hover:text-white transition-colors"
+              <a
+                href="https://wa.me/265892259165"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-xs font-semibold tracking-[0.15em] uppercase text-accent hover:text-white transition-colors"
               >
-                Book Online <MoveRight size={14} />
-              </Link>
+                <MessageCircle size={14} />
+                WhatsApp: 089 22 59 165
+              </a>
             </motion.div>
           </div>
         </div>

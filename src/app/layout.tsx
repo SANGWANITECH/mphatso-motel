@@ -3,11 +3,11 @@ import "./globals.css";
 import PageWrapper from "@/components/layout/PageWrapper";
 
 export const metadata: Metadata = {
-  title: "Mikoma Beach Lodge | Luxury on Lake Malawi",
+  title: "Mphatso Motel | Mzuzu, Malawi",
   description:
-    "Experience comfort and serenity on the shores of Lake Malawi. Mikoma Beach Lodge offers luxury accommodation, beachfront dining, and unforgettable experiences.",
+    "Mphatso Motel offers comfortable rooms and conference facilities along the M1 Road in Mzuzu, Malawi. Book via call or WhatsApp today.",
   keywords:
-    "Mikoma Beach Lodge, Lake Malawi, luxury lodge, Karonga, Malawi accommodation, beachfront hotel",
+    "Mphatso Motel, Mzuzu hotel, Mzuzu accommodation, conference hall Mzuzu, Chiwanja Mzuzu, Malawi motel",
 };
 
 export default function RootLayout({

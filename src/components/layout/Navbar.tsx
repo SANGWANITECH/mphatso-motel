@@ -3,14 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { X, Menu } from "lucide-react";
+import { X, Menu, Phone, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "The Lodge", href: "/about" },
-  { label: "Suites", href: "/rooms" },
-  { label: "Facilities", href: "/facilities" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Home", href: "/" },
+  { label: "Rooms", href: "/rooms" },
+  { label: "Conference", href: "/conference" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -40,7 +39,6 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
-  // Only go transparent on homepage before scroll
   const isHomePage = pathname === "/";
   const isTransparent = isHomePage && !scrolled;
 
@@ -50,7 +48,7 @@ export default function Navbar() {
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           isTransparent
             ? "bg-transparent"
-            : "bg-[#fbfbe2]/95 backdrop-blur-md shadow-sm"
+            : "bg-[#FAFAF7]/95 backdrop-blur-md shadow-sm"
         }`}
       >
         <div className="max-w-[1280px] mx-auto px-5 md:px-16">
@@ -63,7 +61,7 @@ export default function Navbar() {
                 isTransparent ? "text-white" : "text-primary"
               }`}
             >
-              2NT APARTMENT LODGE
+              MPHATSO MOTEL
             </Link>
 
             {/* Desktop Nav Links */}
@@ -75,7 +73,7 @@ export default function Navbar() {
                   className={`font-body text-xs font-semibold tracking-[0.18em] uppercase transition-all duration-300 relative group ${
                     isTransparent
                       ? pathname === link.href
-                        ? "text-secondary-light"
+                        ? "text-accent"
                         : "text-white/80 hover:text-white"
                       : pathname === link.href
                       ? "text-secondary"
@@ -85,7 +83,7 @@ export default function Navbar() {
                   {link.label}
                   <span
                     className={`absolute -bottom-1 left-0 h-px transition-all duration-300 ${
-                      isTransparent ? "bg-white" : "bg-secondary"
+                      isTransparent ? "bg-accent" : "bg-secondary"
                     } ${
                       pathname === link.href
                         ? "w-full"
@@ -96,18 +94,19 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Desktop Book Now */}
+            {/* Desktop Call Us Button */}
             <div className="hidden md:flex items-center">
-              <Link
-                href="/booking"
-                className={`font-body text-xs font-semibold tracking-[0.18em] uppercase px-6 py-2.5 transition-all duration-300 ${
+              <a
+                href="tel:+265983578271"
+                className={`font-body text-xs font-semibold tracking-[0.18em] uppercase px-6 py-2.5 transition-all duration-300 flex items-center gap-2 ${
                   isTransparent
                     ? "bg-white text-primary hover:bg-white/90"
                     : "bg-primary text-white hover:bg-primary-light"
                 }`}
               >
-                BOOK NOW
-              </Link>
+                <Phone size={13} />
+                CALL US
+              </a>
             </div>
 
             {/* Mobile — Hamburger Only */}
@@ -128,7 +127,6 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -138,7 +136,6 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
             />
 
-            {/* Drawer Panel */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -149,7 +146,7 @@ export default function Navbar() {
               {/* Drawer Header */}
               <div className="flex items-center justify-between px-8 py-6 border-b border-white/10">
                 <span className="font-display text-xs tracking-widest text-white uppercase">
-                  MIKOMA BEACH LODGE
+                  MPHATSO MOTEL
                 </span>
                 <button
                   onClick={() => setMobileOpen(false)}
@@ -172,7 +169,7 @@ export default function Navbar() {
                       href={link.href}
                       className={`font-display text-2xl transition-colors ${
                         pathname === link.href
-                          ? "text-secondary-light"
+                          ? "text-accent"
                           : "text-white/80 hover:text-white"
                       }`}
                     >
@@ -182,14 +179,24 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Drawer Book Now */}
-              <div className="px-8 py-8 border-t border-white/10">
-                <Link
-                  href="/booking"
-                  className="block w-full bg-white text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase text-center py-4 hover:bg-secondary-light transition-colors duration-300"
+              {/* Drawer Contact Actions */}
+              <div className="px-8 py-8 border-t border-white/10 flex flex-col gap-3">
+                <a
+                  href="tel:+265983578271"
+                  className="flex items-center justify-center gap-3 w-full bg-white text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase py-4 hover:bg-accent hover:text-white transition-colors duration-300"
                 >
-                  BOOK NOW
-                </Link>
+                  <Phone size={14} />
+                  CALL US
+                </a>
+                <a
+                  href="https://wa.me/265892259165"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 w-full border border-white/30 text-white font-body text-xs font-semibold tracking-[0.2em] uppercase py-4 hover:bg-white/10 transition-colors duration-300"
+                >
+                  <MessageCircle size={14} />
+                  WHATSAPP
+                </a>
               </div>
             </motion.div>
           </>

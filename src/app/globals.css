@@ -11,8 +11,8 @@
 }
 
 body {
-  background-color: #fbfbe2;
-  color: #1b1d0e;
+  background-color: #FAFAF7;
+  color: #1C1A17;
   font-family: "Plus Jakarta Sans", sans-serif;
   min-height: 100dvh;
 }
@@ -22,8 +22,8 @@ h1, h2, h3, h4 {
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #fbfbe2; }
-::-webkit-scrollbar-thumb { background: #001e40; }
+::-webkit-scrollbar-track { background: #FAFAF7; }
+::-webkit-scrollbar-thumb { background: #2D4A1E; }
 
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);

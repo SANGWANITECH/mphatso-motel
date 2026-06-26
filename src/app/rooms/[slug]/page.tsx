@@ -14,9 +14,12 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  Phone,
+  MessageCircle,
 } from "lucide-react";
 import { rooms } from "@/data/rooms";
 import { use } from "react";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export default function RoomDetailPage({
   params,
@@ -49,7 +52,6 @@ export default function RoomDetailPage({
           HERO IMAGE GALLERY
       ═══════════════════════════════════ */}
       <section className="pt-[72px] relative">
-        {/* Main Image */}
         <div
           className="relative h-[50vh] md:h-[70vh] overflow-hidden cursor-pointer"
           onClick={() => setLightboxOpen(true)}
@@ -63,12 +65,10 @@ export default function RoomDetailPage({
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
 
-          {/* Image Counter */}
           <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm text-white font-body text-xs tracking-wider px-3 py-1">
             {activeImage + 1} / {room.images.length}
           </div>
 
-          {/* Nav Arrows */}
           <button
             onClick={(e) => { e.stopPropagation(); prevImage(); }}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/60 transition-all"
@@ -83,7 +83,6 @@ export default function RoomDetailPage({
           </button>
         </div>
 
-        {/* Thumbnail Strip */}
         <div className="flex gap-2 px-5 md:px-16 py-3 bg-surface overflow-x-auto">
           {room.images.map((img, i) => (
             <button
@@ -107,6 +106,16 @@ export default function RoomDetailPage({
       </section>
 
       {/* ═══════════════════════════════════
+          BREADCRUMB
+      ═══════════════════════════════════ */}
+      <Breadcrumb
+        items={[
+          { label: "Rooms", href: "/rooms" },
+          { label: room.name },
+        ]}
+      />
+
+      {/* ═══════════════════════════════════
           ROOM CONTENT
       ═══════════════════════════════════ */}
       <section className="py-12 md:py-20 px-5 md:px-16">
@@ -115,26 +124,6 @@ export default function RoomDetailPage({
 
             {/* Left — Main Content */}
             <div className="md:col-span-7 space-y-10">
-              {/* Breadcrumb */}
-              <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="flex items-center gap-2 text-on-surface-variant"
-              >
-                <Link
-                  href="/rooms"
-                  className="font-body text-xs tracking-wider uppercase hover:text-primary transition-colors"
-                >
-                  All Rooms
-                </Link>
-                <span className="font-body text-xs">/</span>
-                <span className="font-body text-xs tracking-wider uppercase text-primary">
-                  {room.category}
-                </span>
-              </motion.div>
-
-              {/* Room Name + Category */}
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -142,7 +131,7 @@ export default function RoomDetailPage({
                 transition={{ delay: 0.1 }}
               >
                 <p className="font-body text-xs tracking-[0.25em] uppercase text-secondary mb-3">
-                  {room.category} Suite
+                  {room.category} Room
                 </p>
                 <h1 className="font-display text-3xl md:text-5xl text-primary leading-tight">
                   {room.name}
@@ -157,19 +146,19 @@ export default function RoomDetailPage({
                 transition={{ delay: 0.2 }}
                 className="flex flex-wrap items-center gap-6 py-6 border-y border-outline-variant/30"
               >
-                <div className="flex items-center gap-3 text-on-surface-variant">
+                <div className="flex items-center gap-3">
                   <Users size={18} className="text-secondary" />
                   <div>
                     <p className="font-body text-[10px] tracking-wider uppercase text-on-surface-variant/60">
                       Guests
                     </p>
                     <p className="font-body text-sm font-semibold text-on-surface">
-                      {room.maxGuests} Guests
+                      {room.maxGuests} {room.maxGuests === 1 ? "Guest" : "Guests"}
                     </p>
                   </div>
                 </div>
                 <div className="w-px h-8 bg-outline-variant/30" />
-                <div className="flex items-center gap-3 text-on-surface-variant">
+                <div className="flex items-center gap-3">
                   <Maximize2 size={18} className="text-secondary" />
                   <div>
                     <p className="font-body text-[10px] tracking-wider uppercase text-on-surface-variant/60">
@@ -181,7 +170,7 @@ export default function RoomDetailPage({
                   </div>
                 </div>
                 <div className="w-px h-8 bg-outline-variant/30" />
-                <div className="flex items-center gap-3 text-on-surface-variant">
+                <div className="flex items-center gap-3">
                   <BedDouble size={18} className="text-secondary" />
                   <div>
                     <p className="font-body text-[10px] tracking-wider uppercase text-on-surface-variant/60">
@@ -203,7 +192,7 @@ export default function RoomDetailPage({
                 className="space-y-4"
               >
                 <h2 className="font-display text-2xl text-primary">
-                  About This Suite
+                  About This Room
                 </h2>
                 <p className="font-body text-base text-on-surface-variant leading-relaxed">
                   {room.longDescription}
@@ -219,7 +208,7 @@ export default function RoomDetailPage({
                 className="space-y-4"
               >
                 <h2 className="font-display text-2xl text-primary">
-                  Suite Features
+                  Room Features
                 </h2>
                 <div className="grid grid-cols-2 gap-3">
                   {room.features.map((feature) => (
@@ -261,7 +250,7 @@ export default function RoomDetailPage({
               </motion.div>
             </div>
 
-            {/* Right — Booking Card */}
+            {/* Right — Contact Card instead of booking form */}
             <div className="md:col-span-5">
               <div className="sticky top-24">
                 <motion.div
@@ -271,10 +260,10 @@ export default function RoomDetailPage({
                   transition={{ delay: 0.3 }}
                   className="border border-outline-variant/40 bg-surface"
                 >
-                  {/* Card Header */}
+                  {/* Price Header */}
                   <div className="bg-primary p-6 md:p-8">
                     <p className="font-body text-xs tracking-[0.2em] uppercase text-white/60 mb-1">
-                      Starting From
+                      Rate Per Night
                     </p>
                     <div className="flex items-end gap-2">
                       <span className="font-display text-3xl text-white">
@@ -286,64 +275,44 @@ export default function RoomDetailPage({
                     </div>
                   </div>
 
-                  {/* Card Body */}
-                  <div className="p-6 md:p-8 space-y-6">
-                    <div className="space-y-3">
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <label className="font-body text-[10px] tracking-widest uppercase text-on-surface-variant block mb-2">
-                            Check In
-                          </label>
-                          <input
-                            type="date"
-                            className="w-full border border-outline-variant/50 bg-background px-3 py-2.5 font-body text-sm text-on-surface focus:outline-none focus:border-primary transition-colors"
-                          />
-                        </div>
-                        <div>
-                          <label className="font-body text-[10px] tracking-widest uppercase text-on-surface-variant block mb-2">
-                            Check Out
-                          </label>
-                          <input
-                            type="date"
-                            className="w-full border border-outline-variant/50 bg-background px-3 py-2.5 font-body text-sm text-on-surface focus:outline-none focus:border-primary transition-colors"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label className="font-body text-[10px] tracking-widest uppercase text-on-surface-variant block mb-2">
-                          Guests
-                        </label>
-                        <select className="w-full border border-outline-variant/50 bg-background px-3 py-2.5 font-body text-sm text-on-surface focus:outline-none focus:border-primary transition-colors">
-                          {Array.from(
-                            { length: room.maxGuests },
-                            (_, i) => i + 1
-                          ).map((n) => (
-                            <option key={n} value={n}>
-                              {n} {n === 1 ? "Guest" : "Guests"}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    <Link
-                      href={`/booking?room=${room.slug}`}
-                      className="block w-full bg-primary text-white font-body text-xs font-semibold tracking-[0.2em] uppercase text-center py-4 hover:bg-primary-light transition-colors duration-300"
-                    >
-                      Reserve This Suite
-                    </Link>
-
-                    <Link
-                      href="/contact"
-                      className="block w-full border border-primary text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase text-center py-4 hover:bg-primary hover:text-white transition-all duration-300"
-                    >
-                      Enquire Now
-                    </Link>
-
-                    <p className="font-body text-xs text-on-surface-variant text-center leading-relaxed">
-                      No payment required at this stage. Our team will confirm
-                      your booking within 24 hours.
+                  {/* Contact to Book */}
+                  <div className="p-6 md:p-8 space-y-4">
+                    <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+                      To reserve this room, contact us directly via call or
+                      WhatsApp. We'll confirm availability and get you sorted
+                      right away.
                     </p>
+<a
+                    
+                      href="tel:+265983578271"
+                      className="flex items-center justify-center gap-3 w-full bg-primary text-white font-body text-xs font-semibold tracking-[0.2em] uppercase py-4 hover:bg-primary-light transition-colors duration-300"
+                    >
+                      <Phone size={15} />
+                      CALL TO RESERVE
+                    </a>
+
+                    <a
+                      href="https://wa.me/265892259165"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-3 w-full border border-primary text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase py-4 hover:bg-primary hover:text-white transition-all duration-300"
+                    >
+                      <MessageCircle size={15} />
+                      WHATSAPP US
+                    </a>
+
+                    <div className="pt-2 border-t border-outline-variant/30">
+                      <p className="font-body text-xs text-on-surface-variant text-center leading-relaxed">
+                        Call or WhatsApp us on{" "}
+                        <span className="text-primary font-semibold">
+                          098 35 78 271
+                        </span>{" "}
+                        or{" "}
+                        <span className="text-primary font-semibold">
+                          089 22 59 165
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -363,7 +332,7 @@ export default function RoomDetailPage({
                 Continue Exploring
               </p>
               <h2 className="font-display text-3xl text-primary">
-                Other Suites
+                Other Rooms
               </h2>
             </div>
             <Link

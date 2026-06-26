@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Home as HomeIcon,
-  UtensilsCrossed,
   ShieldCheck,
   Wifi,
   ChevronDown,
@@ -15,38 +13,43 @@ import {
   MoveRight,
   BedDouble,
   Maximize2,
+  Phone,
+  MessageCircle,
+  ParkingSquare,
+  Shirt,
+  Users,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { testimonials } from "@/data/testimonials";
 import { rooms } from "@/data/rooms";
 
 const highlights = [
-  { icon: HomeIcon, label: "Self-Catering Units" },
   { icon: ShieldCheck, label: "24/7 Security" },
-  { icon: UtensilsCrossed, label: "Fully Equipped Kitchens" },
+  { icon: ParkingSquare, label: "Free Parking" },
+  { icon: Shirt, label: "Laundry Service" },
   { icon: Wifi, label: "Free WiFi" },
 ];
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
-    alt: "Apartment building exterior",
+    src: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800",
+    alt: "Motel room interior",
   },
   {
-    src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800",
-    alt: "Apartment bedroom interior",
+    src: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800",
+    alt: "Executive room",
   },
   {
-    src: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800",
-    alt: "Modern kitchen",
+    src: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=800",
+    alt: "Conference hall",
   },
   {
-    src: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800",
-    alt: "Living room lounge area",
+    src: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800",
+    alt: "Standard room",
   },
   {
-    src: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800",
-    alt: "Secure parking area",
+    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800",
+    alt: "Breakfast dining",
   },
 ];
 
@@ -77,13 +80,13 @@ export default function Home() {
       <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1920"
-            alt="2NT Apartments Lodge exterior"
+            src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1920"
+            alt="Mphatso Motel exterior"
             fill
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-primary/30" />
+          <div className="absolute inset-0 bg-primary/40" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/60" />
         </div>
 
@@ -95,7 +98,7 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="font-body text-xs tracking-[0.3em] uppercase text-white/70 mb-6"
           >
-            Lilongwe, Malawi
+            Chiwanja, Mzuzu  Along M1 Road
           </motion.p>
 
           <motion.h1
@@ -105,7 +108,7 @@ export default function Home() {
             transition={{ delay: 0.3, duration: 0.7 }}
             className="font-display text-4xl md:text-6xl lg:text-7xl text-white leading-tight text-shadow mb-8"
           >
-            Your Home Away From Home in the Heart of Lilongwe
+            Your Comfort Stop in the Heart of Mzuzu
           </motion.h1>
 
           <motion.div
@@ -116,16 +119,16 @@ export default function Home() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Link
-              href="/booking"
+              href="/rooms"
               className="w-full sm:w-auto bg-white text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase px-10 py-4 hover:bg-accent hover:text-white transition-all duration-300"
             >
-              Book Your Stay
+              View Rooms
             </Link>
             <Link
-              href="/rooms"
+              href="/conference"
               className="w-full sm:w-auto border border-white text-white font-body text-xs font-semibold tracking-[0.2em] uppercase px-10 py-4 hover:bg-white hover:text-primary transition-all duration-300"
             >
-              Explore Apartments
+              Conference Halls
             </Link>
           </motion.div>
         </div>
@@ -189,8 +192,8 @@ export default function Home() {
             >
               <div className="aspect-[4/5] relative overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=900"
-                  alt="2NT Apartments interior"
+                  src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900"
+                  alt="Mphatso Motel room"
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
@@ -198,10 +201,10 @@ export default function Home() {
               <div className="absolute -bottom-6 -right-6 w-40 h-40 border border-accent/30 -z-10 hidden md:block" />
               <div className="absolute -bottom-4 -left-4 md:bottom-8 md:-left-8 bg-primary text-white px-6 py-4 text-center">
                 <span className="font-display text-3xl text-accent block">
-                  100%
+                  M1
                 </span>
                 <span className="font-body text-xs tracking-widest uppercase text-white/70">
-                  Self-Catering Comfort
+                  Road, Mzuzu
                 </span>
               </div>
             </motion.div>
@@ -216,28 +219,28 @@ export default function Home() {
             >
               <div>
                 <p className="font-body text-xs tracking-[0.25em] uppercase text-secondary mb-4">
-                  Our Story
+                  About Us
                 </p>
                 <h2 className="font-display text-3xl md:text-4xl text-primary leading-tight">
-                  Comfort, Convenience, and Security
+                  Comfort, Value & Warm Hospitality
                 </h2>
               </div>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                2NT Apartments Lodge offers modern, fully furnished apartments
-                in a secure, gated compound in Lilongwe. Whether you're here
-                for business, relocation, or a short city stay, our units are
-                designed to feel like home.
+                Mphatso Motel is conveniently located along the M1 Road in
+                Chiwanja, Mzuzu  making us the ideal stop for travellers,
+                business guests, and conference delegates passing through
+                Northern Malawi.
               </p>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Every apartment is thoughtfully equipped with everything you
-                need — from fully fitted kitchens to fast WiFi and reliable
-                backup power, so you can settle in and focus on what matters.
+                We offer clean, comfortable rooms with breakfast options, three
+                well-equipped conference halls, secure parking, laundry
+                services, and 24/7 security all at a price that makes sense.
               </p>
               <Link
-                href="/about"
+                href="/contact"
                 className="inline-flex items-center gap-3 font-body text-xs font-semibold tracking-[0.2em] uppercase text-secondary hover:gap-5 transition-all duration-300"
               >
-                Discover Our Story <MoveRight size={16} />
+                Get In Touch <MoveRight size={16} />
               </Link>
             </motion.div>
           </div>
@@ -245,7 +248,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════
-          4. FEATURED APARTMENTS
+          4. FEATURED ROOMS
       ═══════════════════════════════════════ */}
       <section className="py-20 md:py-32 bg-surface">
         <div className="max-w-[1280px] mx-auto px-5 md:px-16">
@@ -261,14 +264,14 @@ export default function Home() {
                 Accommodation
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-primary">
-                Our Apartments
+                Our Rooms
               </h2>
             </div>
             <Link
               href="/rooms"
               className="inline-flex items-center gap-3 font-body text-xs font-semibold tracking-[0.2em] uppercase text-primary hover:gap-5 transition-all duration-300 self-start md:self-auto"
             >
-              View All Apartments <MoveRight size={16} />
+              View All Rooms <MoveRight size={16} />
             </Link>
           </motion.div>
 
@@ -336,7 +339,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════
-          5. FACILITIES PREVIEW
+          5. CONFERENCE PREVIEW
       ═══════════════════════════════════════ */}
       <section className="py-20 md:py-32 bg-primary">
         <div className="max-w-[1280px] mx-auto px-5 md:px-16">
@@ -349,45 +352,43 @@ export default function Home() {
           >
             <div>
               <p className="font-body text-xs tracking-[0.25em] uppercase text-accent mb-3">
-                What We Offer
+                Events & Meetings
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-white">
-                Lodge Facilities
+                Conference Halls
               </h2>
             </div>
             <Link
-              href="/facilities"
+              href="/conference"
               className="inline-flex items-center gap-3 font-body text-xs font-semibold tracking-[0.2em] uppercase text-white/70 hover:text-white hover:gap-5 transition-all duration-300 self-start md:self-auto"
             >
-              View All Facilities <MoveRight size={16} />
+              View All Halls <MoveRight size={16} />
             </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/10">
             {[
               {
-                icon: ShieldCheck,
-                label: "24/7 Secure Parking",
-                desc: "Gated compound with round-the-clock security",
+                name: "Main Hall",
+                capacity: 100,
+                price: "MK 100,000",
+                desc: "Our largest hall  ideal for conferences, seminars, and large corporate events.",
               },
               {
-                icon: UtensilsCrossed,
-                label: "Fully Equipped Kitchens",
-                desc: "Self-catering units with fridge, stove, and utensils",
+                name: "Mphatso Hall",
+                capacity: 80,
+                price: "MK 100,000",
+                desc: "A versatile mid-sized hall perfect for workshops, training sessions, and meetings.",
               },
               {
-                icon: HomeIcon,
-                label: "Backup Power & Water",
-                desc: "Reliable generator and water backup, always on",
+                name: "Nyika Hall",
+                capacity: 25,
+                price: "MK 50,000",
+                desc: "A cozy boardroom-style hall suited for small meetings and interviews.",
               },
-              {
-                icon: Wifi,
-                label: "Free High-Speed WiFi",
-                desc: "Fast, reliable internet in every apartment",
-              },
-            ].map((facility, i) => (
+            ].map((hall, i) => (
               <motion.div
-                key={facility.label}
+                key={hall.name}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
@@ -395,19 +396,48 @@ export default function Home() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-primary p-8 md:p-10 hover:bg-primary-light transition-colors duration-300 group"
               >
-                <facility.icon
+                <Users
                   size={28}
                   className="text-accent mb-6 group-hover:scale-110 transition-transform duration-300"
                 />
-                <h3 className="font-display text-lg text-white mb-3">
-                  {facility.label}
+                <h3 className="font-display text-xl text-white mb-2">
+                  {hall.name}
                 </h3>
+                <p className="font-body text-xs font-semibold tracking-wider uppercase text-accent mb-4">
+                  Capacity: {hall.capacity} people · {hall.price}/day
+                </p>
                 <p className="font-body text-sm text-white/60 leading-relaxed">
-                  {facility.desc}
+                  {hall.desc}
                 </p>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <a
+              href="tel:+265997678678"
+              className="inline-flex items-center justify-center gap-3 bg-accent text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase px-10 py-4 hover:bg-white transition-all duration-300"
+            >
+              <Phone size={14} />
+              CALL TO BOOK A HALL
+            </a>
+            <a
+              href="https://wa.me/265892259165"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 border border-white text-white font-body text-xs font-semibold tracking-[0.2em] uppercase px-10 py-4 hover:bg-white hover:text-primary transition-all duration-300"
+            >
+              <MessageCircle size={14} />
+              WHATSAPP US
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -504,73 +534,17 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════
-          7. GALLERY TEASER
-      ═══════════════════════════════════════ */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-[1280px] mx-auto px-5 md:px-16">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4"
-          >
-            <div>
-              <p className="font-body text-xs tracking-[0.25em] uppercase text-secondary mb-3">
-                Visual Journey
-              </p>
-              <h2 className="font-display text-3xl md:text-4xl text-primary">
-                Life at 2NT
-              </h2>
-            </div>
-            <Link
-              href="/gallery"
-              className="inline-flex items-center gap-3 font-body text-xs font-semibold tracking-[0.2em] uppercase text-primary hover:gap-5 transition-all duration-300 self-start md:self-auto"
-            >
-              View Full Gallery <MoveRight size={16} />
-            </Link>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-2 gap-3 md:gap-4">
-            {galleryImages.map((img, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`relative overflow-hidden group ${
-                  i === 0 ? "col-span-2 row-span-2 md:col-span-2 md:row-span-2" : ""
-                }`}
-              >
-                <div className="relative w-full h-full min-h-[160px] md:min-h-[220px] aspect-square">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-300" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
           8. CTA BANNER
       ═══════════════════════════════════════ */}
       <section className="relative py-24 md:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1920"
-            alt="2NT Apartments Lodge"
+            src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=1920"
+            alt="Mphatso Motel"
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-primary/70" />
+          <div className="absolute inset-0 bg-primary/75" />
         </div>
 
         <div className="relative z-10 max-w-[1280px] mx-auto px-5 md:px-16 text-center">
@@ -582,21 +556,33 @@ export default function Home() {
             className="space-y-6 md:space-y-8"
           >
             <p className="font-body text-xs tracking-[0.3em] uppercase text-accent">
-              Begin Your Stay
+              Ready to Stay?
             </p>
             <h2 className="font-display text-3xl md:text-5xl text-white max-w-2xl mx-auto leading-tight">
-              Your Comfortable Stay in Lilongwe Awaits
+              Your Comfort Stop in Mzuzu Awaits
             </h2>
             <p className="font-body text-base text-white/70 max-w-lg mx-auto leading-relaxed">
-              Book your apartment today and discover why 2NT Apartments Lodge
-              is Lilongwe's go-to choice for comfort and convenience.
+              Call or WhatsApp us to reserve your room or conference hall today.
+              We're always happy to help.
             </p>
-            <Link
-              href="/booking"
-              className="inline-block bg-accent text-primary font-body text-xs font-semibold tracking-[0.25em] uppercase px-12 py-5 hover:bg-white transition-all duration-300 mt-4"
-            >
-              RESERVE YOUR STAY
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <a
+                href="tel:+265983578271"
+                className="inline-flex items-center justify-center gap-3 bg-accent text-primary font-body text-xs font-semibold tracking-[0.25em] uppercase px-12 py-5 hover:bg-white transition-all duration-300"
+              >
+                <Phone size={16} />
+                CALL US NOW
+              </a>
+              <a
+                href="https://wa.me/265892259165"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 border border-white text-white font-body text-xs font-semibold tracking-[0.25em] uppercase px-12 py-5 hover:bg-white hover:text-primary transition-all duration-300"
+              >
+                <MessageCircle size={16} />
+                WHATSAPP US
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

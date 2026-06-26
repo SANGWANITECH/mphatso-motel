@@ -8,15 +8,15 @@ import {
   BedDouble,
   Maximize2,
   Users,
-  MoveRight,
+  Phone,
+  MessageCircle,
   CheckCircle2,
 } from "lucide-react";
 import { rooms } from "@/data/rooms";
 import { Room } from "@/types";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
-const categories = ["All", "Standard", "Deluxe", "Executive", "Family"];
-
+const categories = ["All", "Executive", "Standard"];
 
 export default function RoomsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -32,7 +32,7 @@ export default function RoomsPage() {
           BREADCRUMB
       ═══════════════════════════════════ */}
       <div className="pt-[72px]">
-        <Breadcrumb items={[{ label: "Suites" }]} />
+        <Breadcrumb items={[{ label: "Rooms" }]} />
       </div>
 
       {/* ═══════════════════════════════════
@@ -55,7 +55,7 @@ export default function RoomsPage() {
             transition={{ delay: 0.1 }}
             className="font-display text-4xl md:text-6xl text-primary mb-6"
           >
-            The Sanctuary
+            Our Rooms
           </motion.h1>
           <motion.p
             variants={fadeUp}
@@ -64,8 +64,8 @@ export default function RoomsPage() {
             transition={{ delay: 0.2 }}
             className="font-body text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed"
           >
-            Discover a collection of refined living spaces, each meticulously
-            crafted to merge contemporary luxury with the raw beauty of 2NT
+            Clean, comfortable rooms with breakfast options designed for
+            travellers, business guests, and anyone passing through Mzuzu.
           </motion.p>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default function RoomsPage() {
                   className="group flex flex-col bg-surface overflow-hidden"
                 >
                   {/* Image */}
-                  <div className="relative h-[280px] md:h-[360px] overflow-hidden">
+                  <div className="relative h-[280px] md:h-[320px] overflow-hidden">
                     <Image
                       src={room.images[0]}
                       alt={room.name}
@@ -137,7 +137,7 @@ export default function RoomsPage() {
                     <div className="absolute top-4 left-4 flex gap-2">
                       {room.featured && (
                         <span className="bg-accent text-primary font-body text-[10px] font-semibold tracking-[0.15em] uppercase px-3 py-1">
-                          FEATURED
+                          POPULAR
                         </span>
                       )}
                       <span className="bg-white/90 backdrop-blur-sm text-primary font-body text-[10px] font-semibold tracking-[0.15em] uppercase px-3 py-1">
@@ -148,13 +148,10 @@ export default function RoomsPage() {
                     {/* Price Tag */}
                     <div className="absolute bottom-4 right-4 bg-primary/90 backdrop-blur-sm text-white px-4 py-2 text-right">
                       <span className="font-body text-[10px] text-white/70 block tracking-wider uppercase">
-                        From
+                        Per Night
                       </span>
                       <span className="font-display text-base text-white">
                         MK {room.price.toLocaleString()}
-                      </span>
-                      <span className="font-body text-[10px] text-white/70">
-                        /night
                       </span>
                     </div>
                   </div>
@@ -170,7 +167,7 @@ export default function RoomsPage() {
                     <div className="flex flex-wrap items-center gap-4 mb-5 text-on-surface-variant">
                       <span className="flex items-center gap-2 font-body text-xs font-semibold tracking-wider uppercase">
                         <Users size={13} />
-                        {room.maxGuests} Guests
+                        {room.maxGuests} {room.maxGuests === 1 ? "Guest" : "Guests"}
                       </span>
                       <span className="flex items-center gap-2 font-body text-xs font-semibold tracking-wider uppercase">
                         <Maximize2 size={13} />
@@ -203,20 +200,24 @@ export default function RoomsPage() {
                       ))}
                     </div>
 
-                    {/* Actions */}
+                    {/* Actions — Call or WhatsApp instead of booking */}
                     <div className="mt-auto flex gap-3">
-                      <Link
-                        href={`/rooms/${room.slug}`}
-                        className="flex-1 bg-primary text-white font-body text-xs font-semibold tracking-[0.15em] uppercase py-4 text-center hover:bg-primary-light transition-colors duration-300"
+                      <a
+                        href="tel:+265983578271"
+                        className="flex-1 bg-primary text-white font-body text-xs font-semibold tracking-[0.15em] uppercase py-4 text-center hover:bg-primary-light transition-colors duration-300 flex items-center justify-center gap-2"
                       >
-                        View Details
-                      </Link>
-                      <Link
-                        href={`/booking?room=${room.slug}`}
-                        className="flex-1 border border-primary text-primary font-body text-xs font-semibold tracking-[0.15em] uppercase py-4 text-center hover:bg-primary hover:text-white transition-all duration-300"
+                        <Phone size={13} />
+                        Call to Book
+                      </a>
+                      <a
+                        href="https://wa.me/265892259165"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 border border-primary text-primary font-body text-xs font-semibold tracking-[0.15em] uppercase py-4 text-center hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                       >
-                        Book Now
-                      </Link>
+                        <MessageCircle size={13} />
+                        WhatsApp
+                      </a>
                     </div>
                   </div>
                 </motion.div>
@@ -236,15 +237,28 @@ export default function RoomsPage() {
               Need Help Choosing?
             </p>
             <h3 className="font-display text-2xl md:text-3xl text-white">
-              Can't decide? Talk to us.
+              Not sure which room suits you?
             </h3>
           </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-3 bg-white text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase px-8 py-4 hover:bg-accent hover:text-white transition-all duration-300 shrink-0"
-          >
-            Contact Our Team <MoveRight size={16} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            
+            <a
+              href="tel:+265983578271"
+              className="inline-flex items-center justify-center gap-2 bg-white text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase px-8 py-4 hover:bg-accent hover:text-white transition-all duration-300"
+            >
+              <Phone size={14} />
+              Call Us
+            </a>
+            <a
+              href="https://wa.me/265892259165"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border border-white text-white font-body text-xs font-semibold tracking-[0.2em] uppercase px-8 py-4 hover:bg-white hover:text-primary transition-all duration-300"
+            >
+              <MessageCircle size={14} />
+              WhatsApp
+            </a>
+          </div>
         </div>
       </section>
     </>

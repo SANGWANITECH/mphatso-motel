@@ -1,43 +1,37 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 
-const exploreLinks = [
-  { label: "About Us", href: "/about" },
-  { label: "Apartments", href: "/rooms" },
-  { label: "Facilities", href: "/facilities" },
-  { label: "Gallery", href: "/gallery" },
-];
-
-const quickLinks = [
-  { label: "Contact Us", href: "/contact" },
-  { label: "Book a Stay", href: "/booking" },
+const pageLinks = [
+  { label: "Home", href: "/" },
+  { label: "Rooms", href: "/rooms" },
+  { label: "Conference", href: "/conference" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-primary text-on-primary">
-      {/* Gold Accent Top Border */}
+      {/* Accent Top Border */}
       <div className="h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
 
       {/* Main Footer */}
-      <div className="max-w-[1280px] mx-auto px-5 md:px-16 py-20 md:py-28">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-16 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
 
           {/* Brand Column */}
-          <div className="md:col-span-4 space-y-8">
-            {/* Logo */}
+          <div className="md:col-span-4 space-y-6">
             <Link href="/" className="block">
               <span className="font-display text-xl tracking-[0.2em] uppercase text-white block">
-                2NT
+                MPHATSO
               </span>
               <span className="font-display text-xl tracking-[0.2em] uppercase text-accent block">
-                APARTMENTS LODGE
+                MOTEL
               </span>
             </Link>
 
             <p className="font-body text-sm text-white/60 leading-relaxed max-w-xs">
-              Modern, fully furnished apartments in a secure compound in the
-              heart of Lilongwe — your comfortable home away from home.
+              Your comfortable stop along the M1 Road in Mzuzu clean rooms,
+              conference facilities, and warm Malawian hospitality.
             </p>
 
             {/* Social Icons */}
@@ -62,16 +56,6 @@ export default function Footer() {
                   <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
                 </svg>
               </a>
-              <a
-                href="#"
-                className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/60 hover:border-accent hover:text-accent transition-all duration-300"
-                aria-label="Twitter"
-              >
-                <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M4 4l16 16M4 20L20 4"/>
-                  <path d="M20 4 4 20M4 4l16 16" stroke="currentColor" strokeWidth="2" fill="none"/>
-                </svg>
-              </a>
             </div>
 
             {/* Contact Info */}
@@ -79,35 +63,41 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin size={15} className="text-accent shrink-0 mt-0.5" />
                 <span className="font-body text-sm text-white/60">
-                  Area 47, Lilongwe, Malawi
+                  Along M1 Road, Chiwanja, Mzuzu P.O. Box 895
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={15} className="text-accent shrink-0" />
                 <span className="font-body text-sm text-white/60">
-                  +265 999 000 000
+                  098 35 78 271
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <MessageCircle size={15} className="text-accent shrink-0" />
+                <span className="font-body text-sm text-white/60">
+                  089 22 59 165 (WhatsApp)
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={15} className="text-accent shrink-0" />
                 <span className="font-body text-sm text-white/60">
-                  info@2ntapartments.com
+                  mphatsomotel@gmail.com
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Explore Links */}
+          {/* Page Links */}
           <div className="md:col-span-2 md:col-start-6 space-y-6">
             <h4 className="font-body text-xs font-semibold tracking-[0.2em] uppercase text-accent">
-              Explore
+              Navigate
             </h4>
             <ul className="space-y-4">
-              {exploreLinks.map((link) => (
+              {pageLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-body text-sm text-white/60 hover:text-white transition-colors duration-300 relative group flex items-center gap-2"
+                    className="font-body text-sm text-white/60 hover:text-white transition-colors duration-300 group flex items-center gap-2"
                   >
                     <span className="w-0 h-px bg-accent transition-all duration-300 group-hover:w-4" />
                     {link.label}
@@ -117,57 +107,45 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-2 space-y-6">
+          {/* Contact Actions */}
+          <div className="md:col-span-4 md:col-start-9 space-y-6">
             <h4 className="font-body text-xs font-semibold tracking-[0.2em] uppercase text-accent">
-              Quick Links
-            </h4>
-            <ul className="space-y-4">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="font-body text-sm text-white/60 hover:text-white transition-colors duration-300 relative group flex items-center gap-2"
-                  >
-                    <span className="w-0 h-px bg-accent transition-all duration-300 group-hover:w-4" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="md:col-span-3 md:col-start-10 space-y-6">
-            <h4 className="font-body text-xs font-semibold tracking-[0.2em] uppercase text-accent">
-              Newsletter
+              Make a Booking
             </h4>
             <p className="font-body text-sm text-white/60 leading-relaxed">
-              Stay updated with exclusive offers and availability at 2NT
-              Apartments Lodge.
+              To reserve a room or conference hall, contact us directly via
+              call or WhatsApp.
             </p>
             <div className="flex flex-col gap-3">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="bg-white/5 border border-white/15 text-white placeholder:text-white/30 font-body text-sm px-4 py-3 w-full focus:outline-none focus:border-accent transition-colors"
-              />
-              <button className="w-full bg-accent text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase py-3 hover:bg-accent/90 transition-colors duration-300">
-                SUBSCRIBE
-              </button>
+              <a
+                href="tel:+265983578271"
+                className="flex items-center justify-center gap-3 bg-accent text-primary font-body text-xs font-semibold tracking-[0.2em] uppercase py-3 hover:bg-accent/90 transition-colors duration-300"
+              >
+                <Phone size={14} />
+                CALL TO BOOK
+              </a>
+              <a
+                href="https://wa.me/265892259165"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 border border-white/20 text-white font-body text-xs font-semibold tracking-[0.2em] uppercase py-3 hover:bg-white/10 transition-colors duration-300"
+              >
+                <MessageCircle size={14} />
+                WHATSAPP US
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Divider */}
+      {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="max-w-[1280px] mx-auto px-5 md:px-16 py-6 pb-24 md:pb-6 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="font-body text-xs text-white/30">
-            © 2026 2NT Apartments Lodge. All Rights Reserved.
+            © 2026 Mphatso Motel. All Rights Reserved.
           </p>
           <p className="font-body text-xs text-white/30">
-            Lilongwe, Malawi
+            Chiwanja, Mzuzu, Malawi
           </p>
         </div>
       </div>

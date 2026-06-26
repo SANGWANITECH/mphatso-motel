@@ -1,29 +1,32 @@
 "use client";
 
-import Link from "next/link";
-import { Calendar, BedDouble } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 
 export default function MobileNav() {
   return (
-    <nav className="fixed bottom-0 left-0 w-full z-50 flex md:hidden border-t border-outline-variant bg-[#fbfbe2]">
-      <Link
-        href="/booking"
+    <nav className="fixed bottom-0 left-0 w-full z-50 flex md:hidden border-t border-outline-variant bg-[#FAFAF7]">
+      <a
+        href="tel:+265983578271"
         className="flex flex-col items-center justify-center gap-1 w-full py-3 text-on-surface-variant hover:text-secondary transition-colors"
       >
-        <Calendar size={20} />
+        <Phone size={20} />
         <span className="font-body text-[11px] font-semibold tracking-widest uppercase">
-          Check Availability
+          Call Us
         </span>
-      </Link>
-      <Link
-        href="/booking"
+      </a>
+
+      <a
+      
+        href="https://wa.me/265892259165"
+        target="_blank"
+        rel="noopener noreferrer"
         className="flex flex-col items-center justify-center gap-1 w-full py-3 bg-primary text-on-primary hover:bg-primary-light transition-colors"
       >
-        <BedDouble size={20} />
+        <MessageCircle size={20} />
         <span className="font-body text-[11px] font-semibold tracking-widest uppercase">
-          Book Now
+          WhatsApp
         </span>
-      </Link>
+      </a>
     </nav>
   );
 }
